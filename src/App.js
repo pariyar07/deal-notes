@@ -1,9 +1,11 @@
-import {Homepage} from "pages/Homepage/index"
+// import {Homepage} from "pages/Homepage/index"
+import {Notespage} from "pages/Notespage/index"
 
 function App() {
   return (
     <div className="App">
-      <Homepage/>
+      {/* <Homepage/> */}
+      <Notespage/>
     </div>
   );
 }

@@ -1,0 +1,162 @@
+.nav-person{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+/* notes-body */
+.notes-body{
+    display: flex;
+    flex-direction: row;
+}
+
+.notes-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* note-aside */
+.note-aside-wrapper{
+    height: 100vh;
+    min-width: 15rem;
+}
+
+.note-aside-list-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin: 1rem 0;
+}
+
+.note-aside-list{
+    font-size: 1.2rem;
+    padding: 1rem 0 1rem 2rem;
+    color: var(--primary-bg);
+    cursor: pointer;
+    transition: all 0.5s ease-in;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+.note-aside-list:hover{
+    color: var(--primary-clr);
+    background: var(--notes-primary);
+}
+
+/* create-note */
+.create-note-wrapper{
+    display: flex;
+    width: 100%;
+    height: 20rem;
+    justify-content: center;
+    position: relative;
+}
+
+.create-note-form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 3rem 0;
+    width: 30rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.create-note-title, .create-note-description{
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.add-note-button{
+    position: absolute;
+    bottom: 1rem;
+    right: 33%;
+    font-size: 2.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--notes-primary);
+    transition: .3s ease-in;
+}
+.add-note-button:hover{
+    padding-bottom: .3rem;
+}
+
+/* individual-note */
+.notes-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 2rem;
+}
+
+.note-wrapper{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 16.5rem;
+    height: 18rem;
+    border-radius: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.note-wrapper>h1{
+    word-wrap: break-word;
+    width: 80%;
+}
+
+.pin-note{
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 1.2rem;
+    top: 1.5rem;
+    cursor: pointer;
+    padding-bottom: 0.3rem;
+    transition: 0.3s ease-out;
+}
+.pin-note:hover{
+    padding-bottom: 0;
+    padding-top: 0.3rem;
+}
+
+.note-wrapper>p{
+    word-wrap: break-word;
+    font-size: 1.2rem;
+}
+
+.note-wrapper>div{
+    display: flex;
+    flex-direction: row;
+    margin-top: .5rem;
+    gap: 1.2rem;
+    justify-content: flex-end;
+}
+
+.note-wrapper>div>button{
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+.note-wrapper>div>button:hover{
+    padding-top: 0;
+    padding-bottom: 0.5rem;
+}
