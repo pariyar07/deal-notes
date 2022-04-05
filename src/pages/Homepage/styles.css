@@ -146,8 +146,16 @@
     cursor: pointer;
 }
 
+.how-it-works, .how-it-works>button{
+    margin-right: 0.2rem;
+    font-weight: 800;
+    transition: 0.3s ease-in-out;
+}
+
 .how-it-works:hover, .how-it-works>button:hover{
-    color: var(--notes-primary);
+    color: var(--notes-primary-dark);
+    margin-right: 0;
+    margin-left: 0.2rem;
 }
 
 .learn-more, .learn-more>button{
@@ -214,8 +222,8 @@
     background: none;
     border-radius: 0.3rem;
     cursor: pointer;
-    z-index: 1;
     transition: 0.3s linear;
+    z-index: 1;
 }
 .home-archive>span:hover, .home-labels>span:hover{
     color: var(--primary-clr);
