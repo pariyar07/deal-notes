@@ -1,0 +1,237 @@
+/* navbar */
+.nav-wrapper {
+    display: flex;
+    flex-direction: row;
+    min-width: 100vw;
+    padding: 0 8rem;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-clr);
+}
+
+.home-nav-img {
+    width: 100px;
+    cursor: pointer;
+}
+
+.nav-btn-wrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-login,
+.nav-signup {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.nav-login {
+    color: var(--primary-clr);
+    background: var(--primary-bg);
+    transition: .3s ease-in;
+}
+
+.nav-login:hover {
+    color: var(--primary-bg);
+    background: var(--primary-clr);
+}
+
+.nav-signup {
+    color: var(--primary-clr);
+    background: var(--notes-primary);
+    transition: .3s ease-in;
+}
+
+.nav-signup:hover {
+    color: var(--primary-bg);
+    background: var(--primary-clr);
+}
+
+/* body */
+.home-body-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 100vw;
+    min-height: 100vh;
+    position: relative;
+}
+
+.home-top-section{
+    display: flex;
+    gap: 3rem;
+    height: 65vh;
+    margin: 3rem 0 0 4rem;
+}
+
+.body-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--notes-primary);
+    width: 15rem;
+    height: 22rem;
+    border-radius: 1rem;
+}
+
+.body-card-img {
+    width: 100%;
+}
+
+.body-card-para {
+    font-size: 2rem;
+    color: var(--primary-clr);
+}
+
+.body-card-para-brand {
+    width: 100%;
+    font-size: 2rem;
+    color: var(--primary-clr);
+    text-align: right;
+    padding-right: 3.5rem;
+    margin-bottom: 1.2rem;
+}
+
+/* body-information */
+.body-info {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 5rem 0 0 3rem;
+}
+
+.body-feature {
+    font-size: 4rem;
+    background: #000428;
+    background: -webkit-linear-gradient(to left, #004e92, #000428);
+    background: linear-gradient(to left, #004e92, #000428);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.body-tagline{
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+}
+.body-tagline>p{
+    font-size: 1.2rem;
+}
+
+.target-img {
+    width: 50px;
+}
+
+.body-btn{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.2rem;
+}
+
+.body-btn>div{
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+}
+
+.body-btn>div>button{
+    font-size: 1.3rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.how-it-works:hover, .how-it-works>button:hover{
+    color: var(--notes-primary);
+}
+
+.learn-more, .learn-more>button{
+    color: var(--primary-clr);
+    background: var(--notes-secondary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+    transition: 0.3s linear;
+    z-index: 1;
+}
+.learn-more:hover, .learn-more>button:hover{
+    color: var(--primary-bg);
+    background: none;
+}
+
+/* bottom-section */
+.home-bottom-section{
+    display: flex;
+    width: 100%;
+    background-color: var(--notes-primary);
+    height: 35vh;
+    gap: 3rem;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+.more-feature{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    color: var(--primary-clr);
+    background-color: var(--notes-primary-dark);
+    margin: 2rem 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.arrow-btn{
+    font-size: 2.5rem;
+    transition: 0.3s linear;
+}
+.arrow-btn:hover{
+    padding-left: 0.5rem;
+}
+
+.home-archive, .home-labels{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    color: var(--primary-clr);
+    background-color: none;
+    margin: 0.5rem 0;
+    padding: 3rem 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.home-archive>span, .home-labels>span{
+    padding: 0.5rem 1rem;
+    color: var(--primary-clr);
+    background: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    z-index: 1;
+    transition: 0.3s linear;
+}
+.home-archive>span:hover, .home-labels>span:hover{
+    color: var(--primary-clr);
+    background-color: var(--notes-primary-dark);
+}
+
+.feature-icon{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 2.5rem;
+    background: var(--notes-primary-dark);
+}
+
+.home-img{
+    position: absolute;
+    width: 1100px;
+    right: -13rem;
+    bottom: 5rem;
+}
