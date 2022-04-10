@@ -20,7 +20,6 @@
 
 /* note-aside */
 .note-aside-wrapper{
-    height: 100vh;
     min-width: 15rem;
 }
 
@@ -36,13 +35,51 @@
     padding: 1rem 0 1rem 2rem;
     color: var(--primary-bg);
     cursor: pointer;
-    transition: all 0.5s ease-in;
+    transition: 0.5s ease-in-out;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
 .note-aside-list:hover{
     color: var(--primary-clr);
     background: var(--notes-primary);
+}
+
+.sort-container{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-left: 2rem;
+}
+
+.date-sort{
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    font-size: 1.2rem;
+}
+.date-sort>li>input, .date-sort>li>label{
+    margin-left: .5rem;
+    cursor: pointer;
+    transition: transform .3s ease-in-out;
+}
+.date-sort>li>input:hover, .date-sort>li>label:hover{
+    color: var(--notes-primary);
+    transform: scale(1.5);
+}
+
+.filter-clear{
+    border: none;
+    background-color: var(--notes-primary);
+    color: var(--primary-clr);
+    padding: .5rem 1.5rem;
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0 4rem;
+    border-radius: .5rem;
+    transition: 0.3s ease-out;
+}
+.filter-clear:hover{
+    color: var(--primary-bg);
+    background: none;
 }
 
 /* create-note */
@@ -67,23 +104,62 @@
 
 .create-note-title, .create-note-description{
     border: none;
-    font-size: 1rem;
     padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    background: none;
 }
 
+/* color */
+.note-colors{
+    display: flex;
+    gap: 0.8rem;
+    color: var(--primary-clr-hover);
+}
+
+.note-colors>div{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+.note-green{
+    background-color: var(--note-green);
+    transition: transform 0.3s ease-in-out;
+}.note-blue{
+    background-color: var(--note-blue);
+    transition: transform 0.3s ease-in-out;
+}.note-yellow{
+    background-color: var(--note-yellow);
+    transition: transform 0.3s ease-in-out;
+}.note-red{
+    background-color: var(--note-red);
+    transition: transform 0.3s ease-in-out;
+}.note-purple{
+    background-color: var(--note-purple);
+    transition: transform 0.3s ease-in-out;
+}
+.note-green:hover, .note-blue:hover, .note-yellow:hover, .note-red:hover, .note-purple:hover{
+    transform: scale(1.3);
+}
+/* add-button */
 .add-note-button{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
     position: absolute;
-    bottom: 1rem;
+    bottom: 1.5rem;
     right: 33%;
     font-size: 2.5rem;
     cursor: pointer;
-    background: none;
+    background: var(--primary-clr);
     border: none;
-    color: var(--notes-primary);
-    transition: .3s ease-in;
+    color: var(--notes-primary-light);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: transform 0.3s ease-in-out;
 }
 .add-note-button:hover{
-    padding-bottom: .3rem;
+    transform: scale(0.8);
 }
 
 /* individual-note */
@@ -98,7 +174,21 @@
     padding: 2rem 2rem;
 }
 
-.note-wrapper{
+.trash-body, .archive-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.trash-note-container, .archive-note-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    width: 100%;
+}
+
+.note-wrapper, .trash-note-wrapper, .archive-note-wrapper{
     display: flex;
     flex-direction: column;
     position: relative;
@@ -108,18 +198,18 @@
     overflow-x: hidden;
     gap: 1rem;
     padding: 1rem;
-    max-width: 16.5rem;
+    width: 16.5rem;
     height: 18rem;
     border-radius: 1rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.note-wrapper>h1{
+.note-wrapper>h1, .trash-note-wrapper>h1, .archive-note-wrapper>h1{
     word-wrap: break-word;
     width: 80%;
 }
 
-.pin-note{
+.edit-note{
     font-size: 1.2rem;
     background: none;
     border: none;
@@ -130,25 +220,39 @@
     padding-bottom: 0.3rem;
     transition: 0.3s ease-out;
 }
-.pin-note:hover{
+.edit-note:hover{
     padding-bottom: 0;
     padding-top: 0.3rem;
 }
 
-.note-wrapper>p{
+.note-wrapper>p, .trash-note-wrapper>p, .archive-note-wrapper>p{
     word-wrap: break-word;
     font-size: 1.2rem;
 }
 
-.note-wrapper>div{
+.note-wrapper>div, .trash-note-wrapper>div, .archive-note-wrapper>div{
     display: flex;
     flex-direction: row;
     margin-top: .5rem;
     gap: 1.2rem;
     justify-content: flex-end;
 }
+.trash-note-wrapper>div, .archive-note-wrapper>div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-.note-wrapper>div>button{
+.note-wrapper>div>p, .trash-note-wrapper>div>p, .archive-note-wrapper>div>p{
+    font-size: .8rem;
+    color: var(--primary-clr-hover);
+}
+
+.undo-btn{
+    margin-left: 3rem;
+}
+
+.note-wrapper>div>button, .trash-note-wrapper>div>button, .archive-note-wrapper>div>button{
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -156,7 +260,15 @@
     cursor: pointer;
     transition: 0.3s ease-in;
 }
-.note-wrapper>div>button:hover{
+.note-wrapper>div>button:hover, .trash-note-wrapper>div>button:hover, .archive-note-wrapper>div>button:hover{
     padding-top: 0;
     padding-bottom: 0.5rem;
+}
+
+/* notes-body */
+.archive-body, .trash-body{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
 }

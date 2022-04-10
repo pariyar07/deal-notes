@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const HomeNav = () => {
+export const LandingNav = () => {
     return (
         <>
             <div className="nav-wrapper">

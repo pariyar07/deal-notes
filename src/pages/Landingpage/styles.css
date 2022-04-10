@@ -138,7 +138,7 @@
     gap: .2rem;
 }
 
-.body-btn>div>button{
+.body-btn>div>button, .body-btn>div>a>button{
     font-size: 1.3rem;
     border: none;
     background: none;
@@ -157,7 +157,7 @@
     margin-left: 0.2rem;
 }
 
-.learn-more, .learn-more>button{
+.get-started>a, .get-started>a>button{
     color: var(--primary-clr);
     background: var(--notes-secondary);
     padding: 0.3rem 0.8rem;
@@ -165,7 +165,7 @@
     transition: 0.3s linear;
     z-index: 1;
 }
-.learn-more:hover, .learn-more>button:hover{
+.get-started>a:hover, .get-started>a>button:hover{
     color: var(--primary-bg);
     background: none;
 }
