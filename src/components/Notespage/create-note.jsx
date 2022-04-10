@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import { v4 as uuid } from 'uuid';
 import { IoMdAdd } from "react-icons/io"
 import { Note } from 'components/Notespage/note'
-import {useNotes} from "contexts/notes-contexts"
+import { useNotes } from "contexts/notes-contexts"
 import date from 'date-and-time';
 
 export const CreateNote = () => {
-    const {notesState: {notes}, notesDispatch, notesDispatch:{sort}} = useNotes();
+    const { notesState: { notes }, notesDispatch, notesDispatch: { sort } } = useNotes();
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
     const [noteColor, setNoteColor] = useState("");
 
     const AddNote = (e) => {
         e.preventDefault();
-        if(!noteTitle || !noteContent) {
+        if (!noteTitle || !noteContent) {
             return
         }
         const newNote = {
@@ -23,7 +23,7 @@ export const CreateNote = () => {
             color: noteColor,
             noteCreated: date.format(new Date(), 'YYYY/MM/DD HH:mm:ss'),
         }
-        notesDispatch({ type: "ADD_NOTE", payload: newNote})
+        notesDispatch({ type: "ADD_NOTE", payload: newNote })
         setNoteTitle('')
         setNoteContent('')
         setNoteColor('')
@@ -80,7 +80,7 @@ export const CreateNote = () => {
             </div>
             <div className="notes-wrapper">
                 {transformNotes().map((note) => {
-                    return <Note note={note} key={note.id} title={note.title} content={note.content} date={note.noteCreated} color={note.color}/>
+                    return <Note note={note} key={note.id} title={note.title} content={note.content} date={note.noteCreated} color={note.color} />
                 })}
             </div>
         </div>
