@@ -5,10 +5,10 @@ import {Footer} from "components/Landingpage/landingpage-footer"
 
 export const LandingPage = () => {
     return (
-        <>
+        <div className="landingpage-container">
             <LandingNav/>
             <LandingPageBody/>
             <Footer/>
-        </>
+        </div>
     )
 }
