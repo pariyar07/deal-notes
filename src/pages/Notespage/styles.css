@@ -6,6 +6,16 @@
     font-size: 1.3rem;
     cursor: pointer;
 }
+
+.nav-search{
+    width: 25rem;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    border: none;
+    background: rgba(120, 120, 120, 0.3);
+    border-radius: .5rem;
+}
+
 /* notes-body */
 .notes-body{
     display: flex;

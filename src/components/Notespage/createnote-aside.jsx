@@ -5,10 +5,8 @@ import { IoMdNotificationsOutline } from "react-icons/io"
 import { BiLabel } from "react-icons/bi"
 import { BsArchive } from "react-icons/bs"
 import { FiTrash } from "react-icons/fi"
-import { useNotes} from 'contexts/notes-contexts'
 
 export const CreateNoteAside = () => {
-    const {notesDispatch, notesDispatch: {sort}} = useNotes()
     return (
         <div className="note-aside-wrapper">
             <ul className="note-aside-list-wrapper">
@@ -22,18 +20,11 @@ export const CreateNoteAside = () => {
                 <h2>Sort By:</h2>
                 <ul className="date-sort">
                     <li>
-                        <input type="radio" id="latest" name="sort-selector" onChange={() => notesDispatch({
-                            type: "SORT_NOTE", payload: "latest"
-                        })}
-                        checked={sort === 'latest' ? false : true}
-                        />
+                        <input type="radio" id="latest" name="sort-selector"/>
                         <label htmlFor="latest">Notes - Latest First</label>
                     </li>
                     <li>
-                        <input type="radio" id="oldest" name="sort-selector" onChange={() => notesDispatch({
-                            type: "SORT_NOTE", payload: "oldest"
-                        })}
-                        checked={sort === 'oldest' ? false : true}/>
+                        <input type="radio" id="oldest" name="sort-selector"/>
                         <label htmlFor="oldest">Notes - Oldest First</label>
                     </li>
                 </ul>
@@ -42,9 +33,3 @@ export const CreateNoteAside = () => {
         </div>
     )
 }
-
-                        //     onClick={() => {
-                        //     filterDispatch({
-                        //         type: "CLEAR_FILTER",
-                        //     })
-                        // }}

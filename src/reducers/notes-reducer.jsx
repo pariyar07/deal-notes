@@ -29,14 +29,6 @@ export const NotesReducer = (state, action) => {
             console.log('Archived', newState)
             return newState
         }
-        case "SORT_NOTE": {
-            const newState = {
-                ...state,
-                sort: action.payload 
-            }
-            console.log('Sorted', newState)
-            return newState
-        }
         default: {
             return state
         }

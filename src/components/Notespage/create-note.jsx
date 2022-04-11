@@ -6,7 +6,7 @@ import { useNotes } from "contexts/notes-contexts"
 import date from 'date-and-time';
 
 export const CreateNote = () => {
-    const { notesState: { notes }, notesDispatch, notesDispatch: { sort } } = useNotes();
+    const { notesState: { notes }, notesDispatch } = useNotes();
     const [noteTitle, setNoteTitle] = useState("");
     const [noteContent, setNoteContent] = useState("");
     const [noteColor, setNoteColor] = useState("");
@@ -28,18 +28,6 @@ export const CreateNote = () => {
         setNoteContent('')
         setNoteColor('')
     }
-
-    const transformNotes = () => {
-        let sortedNotes = notes;
-        if (sort) {
-            sortedNotes = sortedNotes.sort((a, b) =>
-                sort === "latest" ? a.noteCreated - b.noteCreated : b.noteCreated - a.noteCreated
-            );
-        }
-        return sortedNotes;
-    };
-
-
     return (
         <div className="notes-container">
             <div className="create-note-wrapper">
@@ -79,7 +67,7 @@ export const CreateNote = () => {
                 </form>
             </div>
             <div className="notes-wrapper">
-                {transformNotes().map((note) => {
+                {notes.map((note) => {
                     return <Note note={note} key={note.id} title={note.title} content={note.content} date={note.noteCreated} color={note.color} />
                 })}
             </div>
