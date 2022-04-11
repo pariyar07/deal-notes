@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap');
 
-@import url(pages/Homepage/styles.css);
+@import url(pages/Landingpage/styles.css);
+@import url(pages/Notespage/styles.css);
 
 *,
 ::before,
@@ -57,6 +58,12 @@ input:focus, textarea:focus, select:focus{
     --secondary-btn-dark: #caca00;
     --badge-clr: #e67a00;
     --notes-primary: #0b56de;
+    --notes-primary-light: #2e77ff;
     --notes-primary-dark: #023489;
     --notes-secondary: #ff5770;
+    --note-green: #cbff90;
+    --note-blue: #caf0f8;
+    --note-yellow: #fff375;
+    --note-red: #f28b82;
+    --note-purple: #d6aefb;
 }
