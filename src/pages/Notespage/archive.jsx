@@ -15,7 +15,7 @@ export const ArchivePage = () => {
                     { notesState.archive.length === 0 ? <h1 style={{marginBottom: 'auto', marginLeft: 'auto', marginRight: 'auto'}}>Archive is Empty</h1> : 
                         notesState.archive.map(note => {
                             const date = [notesState].map((note) => { return note.noteCreated })
-                            return <ArchiveNote note={note} key={note.id} title={note.title} content={note.content} date={date} color={note.color} />
+                            return <ArchiveNote note={note} key={note.id} title={note.title} content={note.content} date={date} color={note.color} label={note.label} />
                         })
                     }
                 </div>

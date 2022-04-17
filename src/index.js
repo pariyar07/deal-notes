@@ -15,15 +15,16 @@ makeServer();
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <NotesProvider>
-      <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/notes" element={<NotesPage />} />
-      <Route path="/trash" element={<TrashPage />} />
-      <Route path="/archive" element={<ArchivePage />} />
-    </Routes>
-      </BrowserRouter>
-    </NotesProvider>
+      <NotesProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/home" element={<App />} />
+            <Route path="/notes" element={<NotesPage />} />
+            <Route path="/trash" element={<TrashPage />} />
+            <Route path="/archive" element={<ArchivePage />} />
+          </Routes>
+        </BrowserRouter>
+      </NotesProvider>
   </React.StrictMode>,
 );
