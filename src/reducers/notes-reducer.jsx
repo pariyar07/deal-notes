@@ -9,6 +9,12 @@ export const NotesReducer = (state, action) => {
             }
             return newState
         }
+        case "EDIT_NOTE": {
+            const newState = {
+                notes: [...state.notes, action.payload],
+            }
+            return newState
+        }
         case "REMOVE_NOTE": {
             const newState = {
                 ...state,
@@ -16,7 +22,6 @@ export const NotesReducer = (state, action) => {
                 notes: state.notes.filter(note => note.id !== action.payload.id),
                 delete:[...state.notes.filter(deleted => deleted.id === action.payload.id)]
             }
-            console.log('Removing', newState)
             return newState
         }
         case "ARCHIVE_NOTE": {
@@ -26,7 +31,6 @@ export const NotesReducer = (state, action) => {
                 notes: state.notes.filter(note => note.id !== action.payload.id),
                 archive: [...state.notes.filter(archived => archived.id === action.payload.id)]
             }
-            console.log('Archived', newState)
             return newState
         }
         default: {

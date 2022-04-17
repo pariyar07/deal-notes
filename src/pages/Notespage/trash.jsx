@@ -15,7 +15,7 @@ export const TrashPage = () => {
                 { notesState.delete.length === 0 ? <h1 style={{marginBottom: 'auto', marginLeft: 'auto', marginRight: 'auto'}}>Trash is Empty</h1> : 
                         notesState.delete.map(note => {
                             const date = [notesState].map((note) => { return note.noteCreated })
-                            return <TrashNote note={note} key={note.id} title={note.title} content={note.content} date={date} color={note.color} />
+                            return <TrashNote note={note} key={note.id} title={note.title} content={note.content} date={date} color={note.color} label={note.label}/>
                         })
                     }
                 </div>
