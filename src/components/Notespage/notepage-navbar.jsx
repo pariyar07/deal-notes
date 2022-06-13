@@ -6,7 +6,7 @@ export const NoteNav = () => {
     return (
         <>
             <div className="nav-wrapper">
-                <Link to='/home'><img className="home-nav-img" src="/assets/DEAl.png" alt="logo" title="DEAL" /></Link>
+                <Link to='/'><img className="home-nav-img" src="/assets/DEAl.png" alt="logo" title="DEAL" /></Link>
                 <input className="nav-search" type="search" placeholder="🔍 Search Note"></input>
                 <div className="nav-person" title="Account">
                     <BsPersonCircle />

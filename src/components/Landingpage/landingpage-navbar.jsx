@@ -1,4 +1,4 @@
-import React from 'react'
+import {Link } from "react-router-dom";
 
 export const LandingNav = () => {
     return (
@@ -6,8 +6,8 @@ export const LandingNav = () => {
             <div className="nav-wrapper">
                 <img className="home-nav-img" src="/assets/DEAl.png" alt="logo" title="DEAL"/>
                 <div className="nav-btn-wrapper">
-                    <button className="nav-login">Log in</button>
-                    <button className="nav-signup">Sign up</button>
+                    <Link to="/login" className="nav-login">Log in</Link>
+                    <Link to="/signup" className="nav-signup">Sign up</Link>
                 </div>
             </div>
         </>

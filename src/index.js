@@ -1,30 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 import { NotesProvider } from "contexts/notes-contexts";
+import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "contexts/authContext";
 import { makeServer } from "./server";
-import { NotesPage } from "pages/Notespage/index";
-import { TrashPage } from "pages/Notespage/trash";
-import { ArchivePage } from "pages/Notespage/archive";
 
 // Call make Server
 makeServer();
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-      <NotesProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/home" element={<App />} />
-            <Route path="/notes" element={<NotesPage />} />
-            <Route path="/trash" element={<TrashPage />} />
-            <Route path="/archive" element={<ArchivePage />} />
-          </Routes>
-        </BrowserRouter>
-      </NotesProvider>
-  </React.StrictMode>,
+    <BrowserRouter>
+      <AuthProvider>
+        <NotesProvider>
+          <App />
+          <ToastContainer
+            position="bottom-right"
+            autoClose="3000"
+            hideProgressBar="false"
+            closeOnClick="true"
+            pauseOnHover="true"
+            draggable="true"
+            progress="undefined"
+          />
+        </NotesProvider>
+      </AuthProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );
