@@ -1,35 +1,89 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { AiOutlineBulb } from "react-icons/ai"
-import { IoMdNotificationsOutline } from "react-icons/io"
-import { BiLabel } from "react-icons/bi"
-import { BsArchive } from "react-icons/bs"
-import { FiTrash } from "react-icons/fi"
+import { NavLink, Link } from "react-router-dom";
+import { AiOutlineBulb } from "react-icons/ai";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { BiLabel } from "react-icons/bi";
+import { BsArchive } from "react-icons/bs";
+import { FiTrash } from "react-icons/fi";
+import { useNotes } from "contexts/notes-contexts";
+import useToast from "custom/useToast";
 
 export const CreateNoteAside = () => {
-    return (
-        <div className="note-aside-wrapper">
-            <ul className="note-aside-list-wrapper">
-                <Link to="/notes"><li className="note-aside-list" title="Notes"><AiOutlineBulb />&nbsp; Notes</li></Link>
-                <li className="note-aside-list" title="Reminders"><IoMdNotificationsOutline />&nbsp; Reminders</li>
-                <li className="note-aside-list" title="Labels"><BiLabel /> &nbsp; Labels</li>
-                <Link to="/archive"><li className="note-aside-list" title="Archive"><BsArchive />&nbsp; Archive</li></Link>
-                <Link to="/trash"></Link><Link to="/trash"><li className="note-aside-list" title="Trash" to="/trash"><FiTrash />&nbsp; Trash</li></Link>
-            </ul>
-            <div className="sort-container">
-                <h2>Sort By:</h2>
-                <ul className="date-sort">
-                    <li>
-                        <input type="radio" id="latest" name="sort-selector"/>
-                        <label htmlFor="latest">Notes - Latest First</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="oldest" name="sort-selector"/>
-                        <label htmlFor="oldest">Notes - Oldest First</label>
-                    </li>
-                </ul>
-            </div>
-            <button className="filter-clear">Clear Filters</button>
-        </div>
-    )
-}
+  const { setOldestFirst } = useNotes();
+  const { showToast } = useToast();
+
+  const sortLatestNoteHandler = () => {
+    setOldestFirst(false);
+    showToast("Sorted to latest note first", "success");
+  };
+
+  const sortOldestNoteHandler = () => {
+    setOldestFirst(true);
+    showToast("Sorted to oldest note first", "success");
+  };
+
+  function navActive({ isActive }) {
+    return {
+      background: isActive ? "var(--notes-primary)" : "",
+      color: isActive ? "var(--primary-clr)" : "var(--primary-bg)",
+    };
+  }
+
+  return (
+    <div className="note-aside-wrapper">
+      <div className="note-aside-list-wrapper">
+        <NavLink
+          to="/notes"
+          style={navActive}
+          className="note-aside-list"
+          title="Notes"
+        >
+          <AiOutlineBulb />
+          &nbsp; Notes
+        </NavLink>
+        <Link to="/reminders" className="note-aside-list" title="Reminders">
+          <IoMdNotificationsOutline />
+          &nbsp; Reminders
+        </Link>
+        <Link to="/labels" className="note-aside-list" title="Labels">
+          <BiLabel /> &nbsp; Labels
+        </Link>
+        <NavLink
+          to="/archive"
+          style={navActive}
+          className="note-aside-list"
+          title="Archive"
+        >
+          <BsArchive />
+          &nbsp; Archive
+        </NavLink>
+        <NavLink
+          to="/trash"
+          style={navActive}
+          className="note-aside-list"
+          title="Trash"
+        >
+          <FiTrash />
+          &nbsp; Trash
+        </NavLink>
+      </div>
+      <div className="sort-container">
+        <h2>Sort By:</h2>
+        <ul className="date-sort">
+          <li>
+            <input type="radio" id="latest" name="sort-selector" />
+            <label htmlFor="latest" onClick={sortLatestNoteHandler}>
+              Notes - Latest First
+            </label>
+          </li>
+          <li>
+            <input type="radio" id="oldest" name="sort-selector" />
+            <label htmlFor="oldest" onClick={sortOldestNoteHandler}>
+              Notes - Oldest First
+            </label>
+          </li>
+        </ul>
+      </div>
+      <button className="filter-clear">Clear Filters</button>
+    </div>
+  );
+};

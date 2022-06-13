@@ -65,8 +65,8 @@
 .home-top-section{
     display: flex;
     gap: 3rem;
-    height: 65vh;
-    margin: 3rem 0 0 4rem;
+    min-height: 70vh;
+    margin: 3rem 0 1rem 4rem;
 }
 
 .body-card {
@@ -161,7 +161,9 @@
     margin-left: 0.2rem;
 }
 
-.get-started>a, .get-started>a>button{
+.get-started{
+    display: flex;
+    align-items: center;
     color: var(--primary-clr);
     background: var(--notes-secondary);
     padding: 0.3rem 0.8rem;
@@ -169,7 +171,7 @@
     transition: 0.3s linear;
     z-index: 1;
 }
-.get-started>a:hover, .get-started>a>button:hover{
+.get-started:hover{
     color: var(--primary-bg);
     background: none;
 }
@@ -179,7 +181,7 @@
     display: flex;
     width: 100%;
     background-color: var(--notes-primary);
-    height: 35vh;
+    min-height: 35vh;
     gap: 3rem;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
@@ -209,7 +211,7 @@
 .home-archive, .home-labels{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-around;
     font-size: 1.2rem;
     color: var(--primary-clr);
@@ -217,6 +219,7 @@
     margin: 0.5rem 0;
     padding: 3rem 1.5rem;
     border-radius: 0.5rem;
+    z-index: 1;
 }
 
 .home-archive>span, .home-labels>span{
@@ -226,7 +229,6 @@
     border-radius: 0.3rem;
     cursor: pointer;
     transition: 0.3s linear;
-    z-index: 1;
 }
 .home-archive>span:hover, .home-labels>span:hover{
     color: var(--primary-clr);

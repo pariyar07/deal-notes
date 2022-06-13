@@ -1,40 +1,69 @@
 export const NotesReducer = (state, action) => {
-    switch (action.type) {
-        case "ADD_NOTE": {
-            const newState = {
-                totalNotes: state.notes.length + 1,
-                notes: [...state.notes, action.payload],
-                archive: [],
-                delete: []
-            }
-            return newState
-        }
-        case "EDIT_NOTE": {
-            const newState = {
-                notes: [...state.notes, action.payload],
-            }
-            return newState
-        }
-        case "REMOVE_NOTE": {
-            const newState = {
-                ...state,
-                totalNotes: state.notes.length - 1,
-                notes: state.notes.filter(note => note.id !== action.payload.id),
-                delete:[...state.notes.filter(deleted => deleted.id === action.payload.id)]
-            }
-            return newState
-        }
-        case "ARCHIVE_NOTE": {
-            const newState = {
-                ...state,
-                totalNotes: state.notes.length - 1,
-                notes: state.notes.filter(note => note.id !== action.payload.id),
-                archive: [...state.notes.filter(archived => archived.id === action.payload.id)]
-            }
-            return newState
-        }
-        default: {
-            return state
-        }
+  switch (action.type) {
+    case "ADD_NOTE": {
+      return {
+        totalNotes: state.notes.length + 1,
+        notes: [...state.notes, action.payload],
+        archive: [],
+        delete: [],
+      };
     }
-}
+    case "EDIT_NOTE": {
+      return {
+        notes: [...state.notes, action.payload],
+      };
+    }
+    case "DELETE_NOTE": {
+      return {
+        ...state,
+        totalNotes: state.notes.length - 1,
+        notes: state.notes.filter((note) => note._id !== action.payload._id),
+        delete: [...state.delete, { ...action.payload }],
+      };
+    }
+    case "ARCHIVE_NOTE": {
+      return {
+        ...state,
+        totalNotes: state.notes.length - 1,
+        notes: state.notes.filter((note) => note._id !== action.payload._id),
+        archive: [...state.archive, { ...action.payload }],
+      };
+    }
+    case "DELETE_ARCHIVE_NOTE": {
+      return {
+        ...state,
+        archive: state.archive.filter(
+          (note) => note._id !== action.payload._id
+        ),
+        delete: [...state.delete, { ...action.payload }],
+      };
+    }
+    case "UNDO_ARCHIVE_NOTE": {
+      return {
+        ...state,
+        archive: state.archive.filter(
+          (note) => note._id !== action.payload._id
+        ),
+        totalNotes: state.notes.length + 1,
+        notes: [...state.notes, { ...action.payload }],
+      };
+    }
+    case "DELETE_TRASH_NOTE": {
+      return {
+        ...state,
+        delete: state.delete.filter((note) => note._id !== action.payload._id),
+      };
+    }
+    case "UNDO_TRASH_NOTE": {
+      return {
+        ...state,
+        delete: state.delete.filter((note) => note._id !== action.payload._id),
+        totalNotes: state.notes.length + 1,
+        notes: [...state.notes, { ...action.payload }],
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};

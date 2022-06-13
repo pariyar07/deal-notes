@@ -16,45 +16,6 @@
     border-radius: .5rem;
 }
 
-/* edit-modal */
-.edit-note-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 0.5rem;
-    width: 30rem;
-    padding: .5rem;
-    border-radius: 1rem;
-    position: relative;
-    background-color: var(--primary-clr);
-    position: relative;
-}
-.modal-content{
-    border: none;
-    border-radius: 1rem;
-}
-.modal-body{
-    border: none;
-}
-
-.edit-btn.btn-primary{
-    border: none;
-    width: 8rem;
-    font-size: 1.2rem;
-    padding: .2rem .8rem;
-    color: var(--primary-clr);
-    background: var(--notes-primary);
-    border-radius: .5rem;
-    position: absolute;
-    right: 1rem;
-    bottom: -2rem;
-    transition: transform 0.3s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.8) -20px 20px 25px 0px;
-}
-.edit-btn.btn-primary:hover{
-    transform: scale(1.1);
-}
-
 /* notes-body */
 .notes-body{
     display: flex;
@@ -71,6 +32,7 @@
 /* note-aside */
 .note-aside-wrapper{
     min-width: 15rem;
+    padding-left: 1rem;
 }
 
 .note-aside-list-wrapper{
@@ -81,6 +43,8 @@
 }
 
 .note-aside-list{
+    display: flex;
+    align-items: center;
     font-size: 1.2rem;
     padding: 1rem 0 1rem 2rem;
     color: var(--primary-bg);
@@ -89,8 +53,7 @@
     border-radius: 1rem;
 }
 .note-aside-list:hover{
-    color: var(--primary-clr);
-    background: var(--notes-primary);
+    transform: scale(1.1);
 }
 
 .sort-container{
@@ -218,12 +181,16 @@
     transform: scale(0.8);
 }
 
-.add-icon{
-    position:relative;
-    top: calc(50% - 2.2rem);
+/* individual-note */
+.total-notes {
+    font-size: 1.2rem;
+    background-color: var(--notes-primary);
+    color: var(--primary-clr);
+    margin: auto;
+    padding: 0.2rem 1rem;
+    border-radius: 0.5rem;
 }
 
-/* individual-note */
 .notes-wrapper{
     display: flex;
     flex-direction: row;
