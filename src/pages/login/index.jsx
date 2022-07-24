@@ -1,7 +1,33 @@
+import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "contexts/authContext";
+import useToast from "custom/useToast";
 import { Link } from "react-router-dom";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
-const Login = ({ login }) => {
+export default function LogIn() {
+  const { setIsLoggedIn } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { showToast } = useToast();
+
+  const handleGuestLogin = async (e) => {
+    e.preventDefault();
+    try {
+      let response = await axios.post("/api/auth/login", {
+        email: "satyam@deal.com",
+        password: "satyam@deal123",
+      });
+      localStorage.setItem("token", response.data.encodedToken);
+      localStorage.setItem("dealUser", JSON.stringify(response.data.foundUser));
+    } catch (error) {
+      console.error(error);
+    }
+    setIsLoggedIn((isLoggedIn) => !isLoggedIn);
+    showToast("Successfully Logged In", "success");
+    navigate(location?.state?.from?.pathname || "/", { replace: true });
+  };
+
   return (
     <section className="flex w-full min-h-screen justify-around items-center">
       <div className="flex flex-col w-3/6">
@@ -57,7 +83,7 @@ const Login = ({ login }) => {
             </div>
             <span
               className="m-auto text-center text-xl bg-purple text-blue font-semibold w-48 rounded-xl py-1 px-2 cursor-pointer transition-all hover:scale-105"
-              onClick={login}
+              onClick={handleGuestLogin}
               title="Guest Login"
             >
               Log in as Guest
@@ -86,6 +112,4 @@ const Login = ({ login }) => {
       </div>
     </section>
   );
-};
-
-export default Login;
+}

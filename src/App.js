@@ -5,7 +5,7 @@ import { NotesPage } from "pages/Notespage/index";
 import { TrashPage } from "pages/Notespage/trash";
 import { ArchivePage } from "pages/Notespage/archive";
 import { RequiresAuth } from "services/requiresAuth.jsx";
-import Login from "pages/login/login.jsx";
+import Login from "pages/login/index.jsx";
 import SignUp from "pages/signup/signup.jsx";
 
 function App() {

@@ -4,13 +4,15 @@ import { IoMdAdd } from "react-icons/io";
 import { Note } from "components/Notespage/note";
 import { useNotes } from "contexts/notes-contexts";
 import date from "date-and-time";
+import useToast from "custom/useToast";
 
 export const CreateNote = () => {
   const {
     notesState: { notes },
     notesDispatch,
-    oldestFirst
+    oldestFirst,
   } = useNotes();
+  const { showToast } = useToast();
 
   const [noteData, setNoteData] = useState({
     title: "",
@@ -33,6 +35,7 @@ export const CreateNote = () => {
       created: date.format(new Date(), "HH:mm:ss, YYYY/MM/DD"),
     };
     notesDispatch({ type: "ADD_NOTE", payload: newNote });
+    showToast("Note Added", "success");
     setNoteData({ title: "", content: "", label: "" });
     setNoteColor("");
   };
@@ -118,11 +121,15 @@ export const CreateNote = () => {
         </div>
         <p className="total-notes">Total Notes: {notes.length}</p>
         <div className="notes-wrapper">
-          {oldestFirst ? notes.map((note) => {
-            return <Note note={note} key={note._id} />;
-          }).reverse() : notes.map((note) => {
-            return <Note note={note} key={note._id} />;
-          })}
+          {oldestFirst
+            ? notes
+                .map((note) => {
+                  return <Note note={note} key={note._id} />;
+                })
+                .reverse()
+            : notes.map((note) => {
+                return <Note note={note} key={note._id} />;
+              })}
         </div>
       </div>
     </>

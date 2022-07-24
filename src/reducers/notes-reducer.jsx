@@ -8,11 +8,6 @@ export const NotesReducer = (state, action) => {
         delete: [],
       };
     }
-    case "EDIT_NOTE": {
-      return {
-        notes: [...state.notes, action.payload],
-      };
-    }
     case "DELETE_NOTE": {
       return {
         ...state,

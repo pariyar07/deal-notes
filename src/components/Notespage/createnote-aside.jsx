@@ -83,7 +83,6 @@ export const CreateNoteAside = () => {
           </li>
         </ul>
       </div>
-      <button className="filter-clear">Clear Filters</button>
     </div>
   );
 };
