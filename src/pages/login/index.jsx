@@ -20,12 +20,13 @@ export default function LogIn() {
       });
       localStorage.setItem("token", response.data.encodedToken);
       localStorage.setItem("dealUser", JSON.stringify(response.data.foundUser));
+      setIsLoggedIn((isLoggedIn) => !isLoggedIn);
+      navigate(location?.state?.from?.pathname || "/", { replace: true });
+      showToast("Successfully Logged In", "success");
     } catch (error) {
       console.error(error);
+      showToast("Error! Try again later", "error");
     }
-    setIsLoggedIn((isLoggedIn) => !isLoggedIn);
-    showToast("Successfully Logged In", "success");
-    navigate(location?.state?.from?.pathname || "/", { replace: true });
   };
 
   return (

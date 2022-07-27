@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 
 export const NoteNav = () => {
-  const userName = JSON.parse(localStorage.getItem("dealUser"));
+  const user = JSON.parse(localStorage.getItem("dealUser"));
 
   return (
     <>
@@ -23,7 +23,7 @@ export const NoteNav = () => {
         ></input>
         <div className="nav-person" title="Account">
           <BsPersonCircle />
-          <p>Welcome, {userName.firstName}</p>
+          <p>Welcome, {user.username}</p>
         </div>
       </div>
     </>
