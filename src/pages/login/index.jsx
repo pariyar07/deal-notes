@@ -1,3 +1,4 @@
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "contexts/authContext";
@@ -10,6 +11,8 @@ export default function LogIn() {
   const navigate = useNavigate();
   const location = useLocation();
   const { showToast } = useToast();
+  const [userEmail, setUserEmail] = useState();
+  const [userPassword, setUserPassword] = useState();
 
   const handleGuestLogin = async (e) => {
     e.preventDefault();
@@ -17,6 +20,24 @@ export default function LogIn() {
       let response = await axios.post("/api/auth/login", {
         email: "satyam@deal.com",
         password: "satyam@deal123",
+      });
+      localStorage.setItem("token", response.data.encodedToken);
+      localStorage.setItem("dealUser", JSON.stringify(response.data.foundUser));
+      setIsLoggedIn((isLoggedIn) => !isLoggedIn);
+      navigate(location?.state?.from?.pathname || "/", { replace: true });
+      showToast("Successfully Logged In", "success");
+    } catch (error) {
+      console.error(error);
+      showToast("Error! Try again later", "error");
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      let response = await axios.post("/api/auth/login", {
+        email: userEmail,
+        password: userPassword,
       });
       localStorage.setItem("token", response.data.encodedToken);
       localStorage.setItem("dealUser", JSON.stringify(response.data.foundUser));
@@ -60,6 +81,8 @@ export default function LogIn() {
               id="email"
               placeholder="Email"
               className="border-grey border rounded-md py-1 px-2"
+              value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -69,6 +92,8 @@ export default function LogIn() {
               id="password"
               placeholder="Password"
               className="border-grey border rounded-md py-1 px-2"
+              value={userPassword}
+              onChange={(e) => setUserPassword(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-4">
@@ -94,6 +119,7 @@ export default function LogIn() {
             <button
               className="text-center font-medium text-xl bg-black text-white w-full rounded-xl py-2 px-2 cursor-pointer"
               title="Login"
+              onClick={handleLogin}
             >
               Log-In
             </button>
